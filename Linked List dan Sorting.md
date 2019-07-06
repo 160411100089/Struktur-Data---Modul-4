@@ -1,6 +1,53 @@
 # Struktur-Data---Modul-4
 Linked List dan Sorting
------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------
+A. Linked List Lanjut
+
+#Traversal Linked List
+
+Pada proses penelusuran atau traversal dibutuhkan pointer bantuan. Pointer bantuan yang ditunjukkan pada Gambar 6 tersebut, adalah pointer curent yang bergerak dari node awal sampai dengan node akhir. Proses traversal ini dibutuhkan untuk beberapa hal, seperti untuk menghitung jumlah node yang terdapat pada Linked List, untuk mencari node pada linked list, untuk menampilkan seluruh node dari linked list, untuk menyisipkan node setelah atau sebelum node yang sudah terdapat pada linked list, dan untuk menghapus suatu node.
+
+Implementasi pertama yang dibuat adalah pembuatan method size(), untuk menghitung jumlah node. Pada method size terdapat beberapa tahapan :
+- pointer bantuan curent berada pada node yang ditunjuk oleh head (yaitu node pertama)
+- pointer curent bergerak, dengan perintah curent=curent.getNext(), sekaligus dilakukan increment variabel count, yang merepresentasikan jumlah node
+- pergerakan atau traversal ini akan berakhir ketika pointer curent menunjuk pada None, yang merepresentasikan, tidak ada lagi node yang terdapat pada Linked list
+________________________________________________________________________________________________________________________________________
+	class LinkedList:
+    		def __init__(self):
+        		self.head = None
+    		def isEmpty(self):
+        		return self.head==None
+    		def add(self, item):
+        		temp = Node(item)
+        		temp.setNext(self.head)
+        		self.head = temp
+    		def size(self):
+        		curent = self.head
+        		count = 0
+        		while curent != None:
+            			count = count + 1
+            
+            			curent = curent.getNext()           
+        		return count
+________________________________________________________________________________________________________________________________________
+Berikut contoh penggunaan method size() pada class LinkedList
+
+	mylist=LinkedList()
+	mylist.add(45)
+	mylist.add(34)
+	mylist.add(70)
+	print(mylist.size())
+	
+	>>>
+	Running: 3
+
+#Ordered List
+
+Proses pencarian pada linked list sebelumnya dilakukan dengan cara mencari node satu persatu sampai node terakhir. Proses pencarian ini akan menjadi lebih cepat jika data sudah dalam keadaan terurut, sehingga pencarian dapat dihentikan ketika ditemukan node dengan data lebih rendah atau lebih tinggi. Class Ordered List akan memudahkan pencarian suatu node, karena data yang terdapat pada class ini sudah dalam keadaan terurut.
+
+
+
+Method yang terdapat pada ordered list, sama halnya dengan class linkedlist, hanya saja terdapat perbedaan pada method untuk add data (karena node yang terbentuk harus dalam keadaan terurut), dan method search data.
 
 
 B. Sorting
